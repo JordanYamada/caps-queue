@@ -1,0 +1,32 @@
+{
+  "name": "caps-queue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/Global/handleGlobal.js",
+    "watch": "nodemon src/Global/handleGlobal.js",
+    "lint": "eslint **/*.js",
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanYamada/caps-queue.git"
+  },
+  "author": "Jordan Yamada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JordanYamada/caps-queue/issues"
+  },
+  "homepage": "https://github.com/JordanYamada/caps-queue#readme",
+  "dependencies": {
+    "chance": "^1.1.8",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "jest": "^29.1.2",
+    "socket.io": "^4.5.2",
+    "socket.io-client": "^4.5.2",
+    "supertest": "^6.3.0"
+  }
+}
