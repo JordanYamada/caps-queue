@@ -4,6 +4,9 @@ require('dotenv').config();
 const io = require('socket.io');
 const PORT = process.env.PORT || 3002;
 const eventPool = require('../eventPool.js');
+const MessageQueue = require('../MessageQueue/MessageQueue.js');
+const outGoingQueue = new MessageQueue();
+
 
 
 const server = io(PORT);
@@ -46,6 +49,12 @@ global.on('connection', (socket) => {
   socket.on('ready', (payload) => socket.broadcast.emit('ready', payload));
   socket.on('ready2', (payload) => socket.broadcast.emit('ready2', payload));
   socket.on('join', (payload) => socket.broadcast.emit('join', payload));
+  socket.on('getAll', (payload) =>
+  {
+    outGoingQueue.get(payload.clientId).forEach(message => {
+      socket.emit('message', message);
+    });
+  });
 });
 
 module.exports = global;
